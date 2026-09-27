@@ -34,41 +34,51 @@ sections.forEach(section => chapterObserver.observe(section));
 
 const cases = {
   sound: {
-    category: '01 / Pun / Sound', film: 'Airplane! (1980)', title: 'Surely you can’t be serious.<br>I am serious. And don’t call me Shirley.',
+    category: '01 / Pun / Sound', film: 'Airplane! (1980)', title: 'Surely you can’t<br>be serious',
     content: `
-      <div class="case-body"><div><h3>Реплика</h3><p>Surely you can’t<br>be serious.</p></div><div><h3>Ответ</h3><p>I am serious.<br>And don’t call me Shirley.</p></div></div>
-      <div class="case-sequence"><section><span>Механика</span><p>Surely и Shirley сближаются по звучанию. Ответ переносит фразу из обычного вопроса в другое прочтение.</p></section></div>
-      <p class="case-conclusion">Смысл меняет<br>одно созвучие.</p>`
+      <section class="case-section"><h3>На слух</h3><p class="case-quote" lang="en">Surely you can’t be serious.</p><p>«Неужели ты серьёзно?»</p></section>
+      <section class="case-section"><h3>Что слышит доктор</h3><p class="case-equation"><span>Surely</span> ≈ <em>Shirley</em></p></section>
+      <section class="case-section"><h3>Ответ</h3><p class="case-quote" lang="en">I am serious.<br>And don’t call me Shirley.</p></section>
+      <section class="case-section case-mechanism"><h3>Механика</h3><p>Шутка держится почти целиком на звучании.<br>Surely — обычное наречие, но доктор делает вид,<br>будто услышал женское имя Shirley.</p><p>Если считывать только смысл предложения,<br>диалог остаётся понятным — а шутка исчезает.</p></section>
+      <p class="case-conclusion">Ты понял вопрос.<br>Но услышал ли имя?</p>`
   },
   tree: {
-    category: '02 / Broken idiom / Wordplay', film: 'Back to the Future Part II (1989)', title: 'Make like a tree and<br>get out of here.',
+    category: '02 / Broken idiom / Wordplay', film: 'Back to the Future Part II (1989)', title: 'Make like a tree and<br>get out of here',
     content: `
-      <div class="case-reading"><span>Фраза</span><p>Make like a tree and get out of here.</p></div>
-      <div class="case-sequence"><section><span>Механика</span><p>Устойчивое выражение ломается внутри самой реплики. Начало обещает знакомую конструкцию, а продолжение подменяет её.</p></section></div>
-      <p class="case-conclusion">Знакомая форма.<br>Неверное продолжение.</p>`
+      <section class="case-section"><h3>Версия Биффа</h3><p class="case-quote" lang="en">Make like a tree and get out of here.</p></section>
+      <section class="case-section"><h3>Как должно быть</h3><p class="case-quote" lang="en">Make like a tree and leave.</p></section>
+      <section class="case-section case-mechanism"><h3>Механика</h3><p>В выражении есть каламбур:<br>leave — «уйти»,<br>leaf — «лист».</p><p>Бифф ломает шутливую конструкцию,<br>заменяя ключевое слово обычным<br>get out of here.</p><p>Во второй части старый Бифф прямо исправляет молодого:</p><p class="case-quote" lang="en">It’s leave, you idiot.</p></section>
+      <p class="case-conclusion">Все слова правильные.<br>А выражение — нет.</p>`
   },
   numbers: {
     category: '03 / Double meaning', film: 'Austin Powers: International Man of Mystery (1997)', title: 'Who does Number Two<br>work for?',
     content: `
-      <div class="case-reading"><span>Первое прочтение</span><p>Who does Number Two work for?</p></div>
-      <button class="pill meaning-toggle" aria-expanded="false" aria-controls="second-reading">Открыть второе прочтение <span aria-hidden="true">↓</span></button>
-      <div class="case-reading second-reading" id="second-reading" hidden><span>Второе прочтение</span><p>Та же формулировка допускает ещё один смысл слова Number Two.</p><div class="case-sequence"><section><span>Механика</span><p>Одна реплика удерживает два прочтения одновременно.</p></section></div></div>
-      <p class="case-conclusion">Один вопрос.<br>Два смысла.</p>`
+      <section class="case-section"><h3>Первое прочтение</h3><p>Number Two — имя / обозначение персонажа Доктора Зло.</p></section>
+      <button class="meaning-toggle" aria-expanded="false" aria-controls="second-reading">Второе прочтение <span aria-hidden="true">↓</span></button>
+      <div class="second-reading" id="second-reading" hidden>
+        <section class="case-section"><h3>Второе прочтение</h3><p>number two — разговорное обозначение дефекации.</p></section>
+        <section class="case-section case-mechanism"><h3>Механика</h3><p>Остин требует сказать, на кого работает Number Two.</p><p>Мужчина в соседней кабинке слышит второе значение<br>и думает, что Остин буквально борется<br>с содержимым унитаза.</p></section>
+      </div>
+      <p class="case-conclusion">Одна фраза.<br>Две сцены одновременно.</p>`
   },
   sherlocked: {
     category: '04 / Visual wordplay', film: 'Sherlock — S02E01', title: 'I AM<br>SHER LOCKED',
     content: `
-      <div class="case-reading"><span>Видимая фраза</span><p>I AM SHER LOCKED</p></div>
-      <div class="word-split"><span>SHER</span> + LOCKED</div>
-      <div class="case-sequence"><section><span>Механика</span><p>Разбиение слова становится частью смысла. Прочтение зависит от того, как фраза показана, а не только от того, как она звучит.</p></section></div>
-      <p class="case-conclusion">Смысл находится<br>между словами.</p>`
+      <div class="sherlock-construction">
+        <section class="case-section"><h3>Что видно сначала</h3><p class="case-quote" lang="en">I AM <span class="blank-word">____</span> LOCKED</p><p>Телефон защищён четырёхсимвольным паролем.</p></section>
+        <section class="case-section sherlock-key"><h3>Ключ</h3><p>SHER</p></section>
+        <section class="case-section"><h3>Что появляется</h3><p class="case-quote" lang="en">I AM <em>SHER</em> LOCKED</p><p class="word-split"><em>SHER</em> + LOCKED</p></section>
+      </div>
+      <section class="case-section case-mechanism"><h3>Механика</h3><p>Фраза одновременно читается как интерфейс телефона —<br>locked —<br>и как I AM SHERLOCKED.</p><p>Имя Sherlock оказывается спрятано<br>внутри самой конструкции.</p><p>Смысл здесь возникает не только из того,<br>что сказано, но и из того, как фраза показана.</p></section>
+      <p class="case-conclusion">Иногда второй смысл не произносят.<br>Его показывают.</p>`
   },
   culture: {
     category: '05 / Cultural reference', film: 'The Shining (1980)', title: 'Here’s Johnny!',
     content: `
-      <div class="case-reading"><span>Реплика</span><p>Here’s Johnny!</p></div>
-      <div class="case-reference"><span>Дополнительный слой</span><p>Фраза работает как культурная отсылка: ещё один смысл появляется только при узнавании внешнего источника.</p></div>
-      <p class="case-conclusion">Реплика остаётся понятной.<br>Отсылка добавляет второй слой.</p>`
+      <section class="case-section"><h3>Если не знать отсылку</h3><p>Джек проламывает дверь,<br>просовывает голову внутрь и говорит:</p><p class="case-quote" lang="en">Here’s Johnny!</p><p>Сама фраза почти ничего не объясняет.</p></section>
+      <section class="case-section"><h3>Что слышал американский зритель</h3><p>Это узнаваемая формула,<br>которой Эд Макмэхон представлял Джонни Карсона<br>в The Tonight Show.</p></section>
+      <section class="case-section case-mechanism"><h3>Что это добавляет</h3><p>На секунду сцена погони превращается<br>в абсурдный выход телеведущего.</p><p>Без культурного контекста происходящее<br>всё равно понятно,<br>но слой чёрного юмора легко пропустить.</p></section>
+      <p class="case-conclusion">Ты услышал каждое слово.<br>Но часть реплики была не в фильме.</p>`
   }
 };
 const casesSection = document.querySelector('#cases');
@@ -151,7 +161,7 @@ function renderCase(key) {
     const second = caseDialog.querySelector('.second-reading');
     second.hidden = !second.hidden;
     toggle.setAttribute('aria-expanded', String(!second.hidden));
-    toggle.innerHTML = second.hidden ? 'Открыть второе прочтение <span aria-hidden="true">↓</span>' : 'Скрыть второе прочтение <span aria-hidden="true">↑</span>';
+    toggle.innerHTML = second.hidden ? 'Второе прочтение <span aria-hidden="true">↓</span>' : 'Скрыть второе прочтение <span aria-hidden="true">↑</span>';
   });
   caseDialog.scrollTop = 0;
 }
@@ -190,12 +200,13 @@ addEventListener('resize', scheduleElephant);
 updateElephant();
 syncPlayback();
 
-// Three reversible meanings share one sticky viewport. The green point is never
-// touched here: it remains rendered for the entire chapter.
+// Three reversible meanings share one sticky viewport. The green point stays
+// rendered throughout and enters the viewport with the experiment stage.
 const experiment = document.querySelector('#experiment');
 const experimentInstruction = document.querySelector('.experiment-instruction');
 const experimentResult = document.querySelector('.experiment-result');
 const experimentFixation = document.querySelector('.experiment .fixation');
+const experimentPoint = document.querySelector('.experiment .experiment-point');
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 const smoothstep = (from, to, value) => {
   const progress = clamp((value - from) / (to - from));
@@ -215,6 +226,8 @@ function updateExperiment() {
   experimentResult.style.opacity = String(resultEntry);
   experimentResult.style.transform = reducedMotion.matches ? 'none' : `translateY(${(1 - resultEntry) * 3}%)`;
   experimentFixation.style.opacity = String(focusEntry * (1 - focusExit));
+  const pointOffset = (1 - focusEntry) * innerHeight;
+  experimentPoint.style.transform = `translate(-50%,calc(-50% + ${pointOffset}px))`;
 }
 
 // Continuous wheel interpolation on fine pointers. The document remains the
