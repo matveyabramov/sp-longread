@@ -33,54 +33,52 @@ const chapterObserver = new IntersectionObserver(entries => {
 sections.forEach(section => chapterObserver.observe(section));
 
 const cases = {
-  push: {
-    category: '01 / Idiom', film: 'Frozen / 2013', title: 'When push<br>comes to shove',
+  sound: {
+    category: '01 / Pun / Sound', film: 'Airplane! (1980)', title: 'Surely you can’t be serious.<br>I am serious. And don’t call me Shirley.',
     content: `
-      <div class="case-body"><div><h3>Буквальное прочтение</h3><p>Когда толчок<br>доходит до пинка.</p></div><div><h3>Идиоматическое значение</h3><p>Когда ситуация становится<br>по-настоящему трудной.</p></div></div>
-      <div class="case-sequence"><section><span>Что происходит в сцене</span><p>Фраза звучит на фоне физической борьбы: герои действительно толкаются и получают толчки.</p></section><section><span>Почему это работает</span><p>Идиома описывает критический момент, а изображение возвращает словам push и shove их буквальное действие. Один смысл слышен, второй разыгрывается в кадре.</p></section></div>
-      <p class="case-conclusion">Идиома становится<br>видимой.</p>`
+      <div class="case-body"><div><h3>Реплика</h3><p>Surely you can’t<br>be serious.</p></div><div><h3>Ответ</h3><p>I am serious.<br>And don’t call me Shirley.</p></div></div>
+      <div class="case-sequence"><section><span>Механика</span><p>Surely и Shirley сближаются по звучанию. Ответ переносит фразу из обычного вопроса в другое прочтение.</p></section></div>
+      <p class="case-conclusion">Смысл меняет<br>одно созвучие.</p>`
   },
-  bone: {
-    category: '02 / Idiom / Перевод', film: 'The Lion King / 1994', title: 'I have a bone<br>to pick with you',
+  tree: {
+    category: '02 / Broken idiom / Wordplay', film: 'Back to the Future Part II (1989)', title: 'Make like a tree and<br>get out of here.',
     content: `
-      <div class="case-body"><div><h3>Буквальный образ</h3><p>Кость, которую<br>предстоит обглодать.</p></div><div><h3>Идиоматическое значение</h3><p>У меня к тебе<br>серьёзная претензия.</p></div></div>
-      <div class="case-translation"><span class="eyebrow">Смысловой перевод / Авторский пример</span><p>«Я пришёл выяснить отношения»</p></div>
-      <div class="case-sequence"><section><span>Что сохраняется</span><p>Намерение предъявить претензию и прямое напряжение между героями.</p></section><section><span>Что исчезает</span><p>Образ кости — особенно заметный в мире животных The Lion King.</p></section></div>
-      <p class="case-conclusion">Конфликт сохранился.<br>Образ исчез.</p>`
+      <div class="case-reading"><span>Фраза</span><p>Make like a tree and get out of here.</p></div>
+      <div class="case-sequence"><section><span>Механика</span><p>Устойчивое выражение ломается внутри самой реплики. Начало обещает знакомую конструкцию, а продолжение подменяет её.</p></section></div>
+      <p class="case-conclusion">Знакомая форма.<br>Неверное продолжение.</p>`
   },
   numbers: {
-    category: '03 / Double meaning', film: 'Austin Powers: The Spy Who Shagged Me / 1999', title: 'Who does Number Two<br>work for?',
+    category: '03 / Double meaning', film: 'Austin Powers: International Man of Mystery (1997)', title: 'Who does Number Two<br>work for?',
     content: `
-      <div class="case-reading"><span>Первое прочтение</span><p>«На кого работает Номер Два?» Austin допрашивает противника о человеке по прозвищу Number Two.</p></div>
+      <div class="case-reading"><span>Первое прочтение</span><p>Who does Number Two work for?</p></div>
       <button class="pill meaning-toggle" aria-expanded="false" aria-controls="second-reading">Открыть второе прочтение <span aria-hidden="true">↓</span></button>
-      <div class="case-reading second-reading" id="second-reading" hidden><span>Второе прочтение</span><p>Number two — разговорный эвфемизм для дефекации. Мужчина в соседней кабинке слышит вопрос как обращение к себе.</p><div class="case-sequence"><section><span>Почему работают оба смысла</span><p>Austin говорит о сообщнике, но место действия превращает Number Two в туалетную шутку. Сосед отвечает на другое прочтение той же реплики — и сцена удерживает оба одновременно.</p></section></div></div>
-      <p class="case-conclusion">Один вопрос.<br>Два адресата.</p>`
+      <div class="case-reading second-reading" id="second-reading" hidden><span>Второе прочтение</span><p>Та же формулировка допускает ещё один смысл слова Number Two.</p><div class="case-sequence"><section><span>Механика</span><p>Одна реплика удерживает два прочтения одновременно.</p></section></div></div>
+      <p class="case-conclusion">Один вопрос.<br>Два смысла.</p>`
   },
-  ladybug: {
-    category: '04 / Pun', film: 'A Bug’s Life / 1998', title: 'Ladybug',
+  sherlocked: {
+    category: '04 / Visual wordplay', film: 'Sherlock — S02E01', title: 'I AM<br>SHER LOCKED',
     content: `
-      <div class="case-reading"><span>Значение слова</span><p>Ladybug — божья коровка. Название вида ничего не говорит о поле конкретного насекомого.</p></div>
-      <div class="word-split"><span>lady</span> + bug</div>
-      <div class="case-sequence"><section><span>Ложное ожидание</span><p>Слово lady заставляет других персонажей принимать Фрэнсиса за женщину.</p></section><section><span>Как фильм строит шутку</span><p>Фрэнсис — мужчина. Персонажи снова ошибаются из-за названия, а его раздражение превращает языковую ловушку в повторяющийся гэг.</p></section></div>
-      <p class="case-conclusion">Название вида<br>создаёт роль.</p>`
+      <div class="case-reading"><span>Видимая фраза</span><p>I AM SHER LOCKED</p></div>
+      <div class="word-split"><span>SHER</span> + LOCKED</div>
+      <div class="case-sequence"><section><span>Механика</span><p>Разбиение слова становится частью смысла. Прочтение зависит от того, как фраза показана, а не только от того, как она звучит.</p></section></div>
+      <p class="case-conclusion">Смысл находится<br>между словами.</p>`
   },
   culture: {
-    category: '05 / Cultural reference', film: 'The Shining / 1980', title: 'Here’s Johnny!',
+    category: '05 / Cultural reference', film: 'The Shining (1980)', title: 'Here’s Johnny!',
     content: `
-      <div class="case-reading"><span>На поверхности</span><p>«А вот и Джонни!» Джек просовывает голову в проломленную дверь и объявляет своё появление.</p></div>
-      <div class="case-reference"><span>Внешняя отсылка</span><p>Так Эд Макмэн представлял ведущего Джонни Карсона в The Tonight Show: “Heeere’s Johnny!”</p></div>
-      <div class="case-sequence"><section><span>Что добавляет узнавание</span><p>Угроза начинает звучать как пародия на весёлое телевизионное приветствие. Знакомая домашняя формула сталкивается с насилием в кадре — и делает момент ещё более странным и тревожным.</p></section></div>
-      <p class="case-conclusion">Без отсылки — угроза.<br>С отсылкой — ещё и чёрная шутка.</p>`
+      <div class="case-reading"><span>Реплика</span><p>Here’s Johnny!</p></div>
+      <div class="case-reference"><span>Дополнительный слой</span><p>Фраза работает как культурная отсылка: ещё один смысл появляется только при узнавании внешнего источника.</p></div>
+      <p class="case-conclusion">Реплика остаётся понятной.<br>Отсылка добавляет второй слой.</p>`
   }
 };
 const casesSection = document.querySelector('#cases');
 const phrases = [...document.querySelectorAll('.phrase')];
 // Swap working clips here without changing the list or case content.
 const caseMedia = {
-  push: '/public/media/cases/case-01.mp4',
-  bone: '/public/media/cases/case-02.mp4',
+  sound: '/public/media/cases/case-01.mp4',
+  tree: '/public/media/cases/case-02.mp4',
   numbers: '/public/media/cases/case-03.mp4',
-  ladybug: '/public/media/cases/case-04.mp4',
+  sherlocked: '/public/media/cases/case-04.mp4',
   culture: '/public/media/cases/case-05.mp4'
 };
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -125,15 +123,19 @@ function preview(button) {
   syncPlayback();
 }
 function clearPreview() {
-  // Keep the selected scene as the chapter's resting composition.
+  if (caseDialog.open) return;
+  activeCase = undefined;
+  casesSection.classList.remove('has-preview');
+  phrases.forEach(phrase => phrase.classList.remove('is-active'));
+  videos.forEach(video => video.classList.remove('is-active'));
+  document.querySelector('#preview-caption').textContent = 'Пять реплик / Пять сцен';
   syncPlayback();
 }
 motionButton.addEventListener('click', () => { motionPaused = !motionPaused; syncPlayback(); });
-reducedMotion.addEventListener('change', () => { motionPaused = reducedMotion.matches; syncPlayback(); updateElephant(); });
+reducedMotion.addEventListener('change', () => { motionPaused = reducedMotion.matches; syncPlayback(); updateElephant(); updateExperiment(); });
 document.addEventListener('visibilitychange', syncPlayback);
 new IntersectionObserver(([entry]) => {
   casesVisible = entry.isIntersecting;
-  if (casesVisible && !activeCase) preview(phrases[0]);
   syncPlayback();
 }, { rootMargin: '200px 0px' }).observe(casesSection);
 caseDialog.addEventListener('close', syncPlayback);
@@ -163,8 +165,8 @@ phrases.forEach(button => {
     syncPlayback();
   });
 });
-casesSection.addEventListener('pointerleave', () => {
-  if (!casesSection.contains(document.activeElement)) clearPreview();
+document.querySelector('.phrase-list').addEventListener('pointerleave', () => {
+  if (!document.activeElement.matches?.(':focus-visible')) clearPreview();
 });
 document.querySelector('.phrase-list').addEventListener('focusout', event => {
   if (!casesSection.contains(event.relatedTarget)) clearPreview();
@@ -187,3 +189,97 @@ addEventListener('scroll', scheduleElephant, { passive: true });
 addEventListener('resize', scheduleElephant);
 updateElephant();
 syncPlayback();
+
+// Three reversible meanings share one sticky viewport. The green point is never
+// touched here: it remains rendered for the entire chapter.
+const experiment = document.querySelector('#experiment');
+const experimentInstruction = document.querySelector('.experiment-instruction');
+const experimentResult = document.querySelector('.experiment-result');
+const experimentFixation = document.querySelector('.experiment .fixation');
+const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+const smoothstep = (from, to, value) => {
+  const progress = clamp((value - from) / (to - from));
+  return progress * progress * (3 - 2 * progress);
+};
+function updateExperiment() {
+  const rect = experiment.getBoundingClientRect();
+  const travel = Math.max(1, rect.height - innerHeight);
+  const progress = clamp(-rect.top / travel);
+  const instructionExit = smoothstep(.26, .35, progress);
+  const resultEntry = smoothstep(.65, .74, progress);
+  const focusEntry = smoothstep(.3, .38, progress);
+  const focusExit = smoothstep(.61, .69, progress);
+
+  experimentInstruction.style.opacity = String(1 - instructionExit);
+  experimentInstruction.style.transform = reducedMotion.matches ? 'none' : `translateY(${-instructionExit * 3}%)`;
+  experimentResult.style.opacity = String(resultEntry);
+  experimentResult.style.transform = reducedMotion.matches ? 'none' : `translateY(${(1 - resultEntry) * 3}%)`;
+  experimentFixation.style.opacity = String(focusEntry * (1 - focusExit));
+}
+
+// Continuous wheel interpolation on fine pointers. The document remains the
+// scroll container; touch, keyboard and accessibility scrolling stay native.
+const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+let smoothTarget = scrollY;
+let smoothCurrent = scrollY;
+let smoothFrame;
+function runSmoothScroll() {
+  smoothCurrent += (smoothTarget - smoothCurrent) * .18;
+  if (Math.abs(smoothTarget - smoothCurrent) < .5) {
+    smoothCurrent = smoothTarget;
+    scrollTo({ top: smoothCurrent, behavior: 'instant' });
+    smoothFrame = undefined;
+    return;
+  }
+  scrollTo({ top: smoothCurrent, behavior: 'instant' });
+  smoothFrame = requestAnimationFrame(runSmoothScroll);
+}
+addEventListener('wheel', event => {
+  if (reducedMotion.matches || !finePointer.matches || event.ctrlKey || event.metaKey || event.defaultPrevented || event.target.closest('dialog')) return;
+  event.preventDefault();
+  if (!smoothFrame) smoothCurrent = scrollY;
+  const maximum = document.documentElement.scrollHeight - innerHeight;
+  smoothTarget = clamp(smoothTarget + event.deltaY, 0, maximum);
+  if (!smoothFrame) smoothFrame = requestAnimationFrame(runSmoothScroll);
+}, { passive: false });
+
+// The case list responds to direction, then softly returns to neutral.
+const phraseList = document.querySelector('.phrase-list');
+let lastScroll = scrollY;
+let listX = 0;
+let listRotation = 0;
+let listTargetX = 0;
+let listTargetRotation = 0;
+let listMotionFrame;
+function settlePhraseList() {
+  listX += (listTargetX - listX) * .18;
+  listRotation += (listTargetRotation - listRotation) * .18;
+  listTargetX *= .82;
+  listTargetRotation *= .82;
+  phraseList.style.transform = `translate3d(${listX.toFixed(2)}px,0,0) rotate(${listRotation.toFixed(3)}deg)`;
+  if (Math.abs(listX) + Math.abs(listRotation) + Math.abs(listTargetX) + Math.abs(listTargetRotation) > .04) {
+    listMotionFrame = requestAnimationFrame(settlePhraseList);
+  } else {
+    phraseList.style.transform = '';
+    listMotionFrame = undefined;
+  }
+}
+function updateScrollScenes() {
+  updateExperiment();
+  scheduleElephant();
+  const delta = scrollY - lastScroll;
+  lastScroll = scrollY;
+  const caseRect = casesSection.getBoundingClientRect();
+  if (!reducedMotion.matches && caseRect.bottom > 0 && caseRect.top < innerHeight && Math.abs(delta) > .1) {
+    listTargetX = clamp(delta * .12, -6, 6);
+    listTargetRotation = clamp(delta * .008, -.35, .35);
+    if (!listMotionFrame) listMotionFrame = requestAnimationFrame(settlePhraseList);
+  }
+  if (!smoothFrame) {
+    smoothTarget = scrollY;
+    smoothCurrent = scrollY;
+  }
+}
+addEventListener('scroll', updateScrollScenes, { passive: true });
+addEventListener('resize', updateExperiment);
+updateExperiment();

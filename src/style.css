@@ -65,3 +65,92 @@ h2,.editorial-heading{font-size:clamp(44px,4.8vw,72px)}
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.elephant-object{transform:none!important;will-change:auto}}
 
 @media(min-width:701px){.phrase[data-case="numbers"] .phrase-text{font-size:clamp(48px,5.5vw,88px)}}
+
+/* Targeted correction + core motion pass. */
+.display-diacritic,.display-punctuation{display:inline-block;font-family:var(--body);font-weight:750;line-height:inherit;text-transform:inherit}
+.display-diacritic{margin-inline:-.025em .005em;letter-spacing:-.04em}
+.display-punctuation{font-size:.92em;letter-spacing:-.04em;vertical-align:.015em}
+.hero-note{font-size:16px}
+.hero-note .hero-cta{position:relative;background:var(--bg);color:var(--accent);font-size:16px;font-weight:650;letter-spacing:-.01em;border-bottom:2px solid var(--accent);padding:11px 0 9px;transition:color 180ms ease,background-color 180ms ease}
+.hero-note .hero-cta span{font-size:25px;transition:transform 180ms ease}
+@media(hover:hover) and (pointer:fine){.hero-note .hero-cta:hover{background:var(--accent);color:var(--bg)}.hero-note .hero-cta:hover span{color:var(--bg);transform:translate3d(3px,3px,0)}}
+
+/* One sticky chapter, three reversible semantic states. The point is outside
+   every animated panel and is never hidden by CSS or JavaScript. */
+.experiment{height:400svh;position:relative;scroll-margin-top:80px;background:var(--bg)}
+.experiment-sticky{position:sticky;top:80px;height:calc(100svh - 80px);overflow:visible;background:var(--bg)}
+.experiment-stage{position:absolute;inset:0;width:100%;padding-top:64px;padding-bottom:64px;display:flex;flex-direction:column;justify-content:flex-start;will-change:transform,opacity;pointer-events:none}
+.experiment-instruction{opacity:1}.experiment-result{opacity:0;justify-content:center}
+.experiment .section-heading{margin-block:auto;align-items:center}
+.experiment .section-heading h2{font-size:clamp(66px,6.4vw,96px);line-height:1.03;overflow:visible}
+.experiment .section-heading .body-copy{font-size:18px;max-width:420px}
+.experiment .section-heading .body-copy{grid-column:8/11;justify-self:start}
+.experiment-field{position:absolute;inset:0;height:auto;margin:0;z-index:3;pointer-events:none}
+.experiment .fixation{left:21%;top:50%;opacity:0;font-size:58px;will-change:opacity}
+.experiment .experiment-point{left:85%;top:50%;width:22px;height:22px;z-index:4}
+.experiment-result>p{font-family:var(--display);font-weight:500;text-transform:uppercase;font-size:clamp(62px,6.7vw,102px);line-height:1.02;letter-spacing:-.012em;max-width:900px}
+.experiment-result>p span{color:var(--accent)}
+.experiment-result>.body-copy{font-size:18px;margin-top:38px;max-width:380px;margin-left:auto}
+
+/* Brain uses one contained field with a deliberate empty centre. */
+.brain-reading h2{font-size:clamp(45px,4.25vw,64px);line-height:1.02;margin-bottom:40px}
+.brain-reading .body-copy{font-size:18px}
+.brain-reading .footnote{font-size:13px}
+.sentence-strip{grid-template-rows:1fr 1.35fr 1fr;min-height:500px;padding:42px;border:1px solid var(--line);font-family:var(--display);font-weight:500;font-size:clamp(24px,2.35vw,35px);line-height:1.04;text-transform:uppercase}
+.sentence-strip:before,.sentence-strip:after{content:none}
+.sentence-strip>span:first-child{grid-column:1/5;align-self:start}
+.sentence-strip .missing-word{grid-column:2/7;grid-row:2;align-self:center;justify-self:center;font-family:var(--body);font-size:17px;font-weight:500;text-transform:none;color:var(--accent);padding:0}
+.sentence-strip>span:last-child{grid-column:4/8;grid-row:3;align-self:end;justify-self:end;text-align:right}
+.layer-stage h2{font-size:clamp(34px,3.1vw,47px)}
+.layer-rows p{font-size:17px}
+
+/* Media exists only during an explicit pointer or focus selection. */
+.case-backdrop{opacity:0;transition:opacity 250ms var(--ease-out,cubic-bezier(.23,1,.32,1))}
+.cases.has-preview .case-backdrop{opacity:1}
+.case-screen{background:#111412}
+.case-shade{background:#080b0d78}
+.phrase-list{will-change:transform;transform-origin:50% 50%}
+.phrase{opacity:1;transition:opacity 180ms ease,color 180ms ease}
+.phrase-response{display:block;font-family:var(--body);font-size:.34em;font-weight:600;line-height:1.18;letter-spacing:-.02em;text-transform:none;margin-top:.65em;max-width:760px}
+.cases.has-preview .phrase{opacity:.28}
+.cases.has-preview .phrase.is-active{opacity:1}
+.phrase.is-active .phrase-text>span{background:transparent;padding:0}
+.case-motion{opacity:0;pointer-events:none;transition:opacity 180ms ease}
+.cases.has-preview .case-motion{opacity:1;pointer-events:auto}
+.coverage-bottom .body-copy,.practice-layout>.body-copy{font-size:17px}
+
+/* Each premise, connector and question is one immediately readable pair. */
+.echo h2{font-size:clamp(48px,4.7vw,70px);line-height:1.03;max-width:1020px}
+.echo-pairs{gap:16px}
+.echo-pairs>div{--pair-offset:18px;grid-template-columns:var(--columns);min-height:145px;padding-top:var(--pair-offset);align-items:start}
+.echo-pairs>div:nth-child(2){--pair-offset:58px}.echo-pairs>div:nth-child(3){--pair-offset:34px}
+.echo-pairs p:first-child{grid-column:1/4;font-size:18px;padding-top:8px}
+.echo-connector{grid-column:4/8;height:1px;background:var(--line);margin-top:17px}
+.echo-pairs p:last-child,.echo-pairs>div:nth-child(2) p:last-child,.echo-pairs>div:nth-child(3) p:last-child{grid-column:8/13;font-size:clamp(30px,2.8vw,42px);line-height:1.08;padding-top:0;margin:0;max-width:500px}
+
+@media(max-width:700px){
+  .display-diacritic{font-weight:750}
+  .hero-note{font-size:15px}.hero-note .hero-cta{font-size:15px;background:var(--bg);padding-inline:0}
+  .experiment{height:360svh;scroll-margin-top:65px}
+  .experiment-sticky{top:65px;height:calc(100svh - 65px)}
+  .experiment-stage{padding:38px var(--gutter)}
+  .experiment .section-heading{display:block;margin:auto 0}
+  .experiment .section-heading h2{font-size:clamp(48px,14vw,64px)}
+  .experiment .section-heading .body-copy{font-size:17px;margin-top:38px}
+  .experiment .section-heading .body-copy{grid-column:auto}
+  .experiment .fixation{left:12%;font-size:48px}
+  .experiment .experiment-point{width:17px;height:17px}
+  .experiment-result>p{font-size:clamp(43px,11.5vw,58px)}
+  .experiment-result>.body-copy{font-size:17px;margin:32px 0 0;max-width:280px}
+  .brain-reading h2{font-size:42px}.brain-reading .body-copy{font-size:17px}
+  .sentence-strip{min-height:390px;padding:24px;grid-template-rows:1fr 1.3fr 1fr;font-size:25px}
+  .sentence-strip .missing-word{font-size:17px}
+  .layer-stage h2{font-size:31px}.layer-rows p{font-size:17px}
+  .echo h2{font-size:38px}
+  .echo-pairs{gap:42px}
+  .echo-pairs>div,.echo-pairs>div:nth-child(2),.echo-pairs>div:nth-child(3){display:grid;grid-template-columns:1fr;min-height:0;padding-top:0}
+  .echo-pairs p:first-child{grid-column:1;font-size:17px;padding:0}
+  .echo-connector{grid-column:1;width:76px;margin:14px 0 19px 18%}
+  .echo-pairs p:last-child,.echo-pairs>div:nth-child(2) p:last-child,.echo-pairs>div:nth-child(3) p:last-child{grid-column:1;font-size:29px;padding:0;margin-left:18%;max-width:290px}
+}
+@media(prefers-reduced-motion:reduce){.experiment-stage{transform:none!important}.phrase-list{transform:none!important}.case-backdrop,.phrase,.case-motion,.hero-note .hero-cta,.hero-note .hero-cta span{transition-duration:0ms}}
