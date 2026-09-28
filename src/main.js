@@ -1,3 +1,7 @@
+const MOTION_ENABLED = false;
+
+document.documentElement.classList.toggle('motion-disabled', !MOTION_ENABLED);
+
 const nav = document.querySelector('#navigation');
 const caseDialog = document.querySelector('#case-dialog');
 let returnFocus;
@@ -142,7 +146,14 @@ function clearPreview() {
   syncPlayback();
 }
 motionButton.addEventListener('click', () => { motionPaused = !motionPaused; syncPlayback(); });
-reducedMotion.addEventListener('change', () => { motionPaused = reducedMotion.matches; syncPlayback(); updateElephant(); updateExperiment(); });
+reducedMotion.addEventListener('change', () => {
+  motionPaused = reducedMotion.matches;
+  syncPlayback();
+  if (MOTION_ENABLED) {
+    updateElephant();
+    updateExperiment();
+  }
+});
 document.addEventListener('visibilitychange', syncPlayback);
 new IntersectionObserver(([entry]) => {
   casesVisible = entry.isIntersecting;
@@ -195,9 +206,11 @@ function updateElephant() {
 function scheduleElephant() {
   if (!elephantFrame) elephantFrame = requestAnimationFrame(updateElephant);
 }
-addEventListener('scroll', scheduleElephant, { passive: true });
-addEventListener('resize', scheduleElephant);
-updateElephant();
+if (MOTION_ENABLED) {
+  addEventListener('scroll', scheduleElephant, { passive: true });
+  addEventListener('resize', scheduleElephant);
+  updateElephant();
+}
 syncPlayback();
 
 // Three reversible meanings share one sticky viewport. The green point stays
@@ -247,14 +260,16 @@ function runSmoothScroll() {
   scrollTo({ top: smoothCurrent, behavior: 'instant' });
   smoothFrame = requestAnimationFrame(runSmoothScroll);
 }
-addEventListener('wheel', event => {
-  if (reducedMotion.matches || !finePointer.matches || event.ctrlKey || event.metaKey || event.defaultPrevented || event.target.closest('dialog')) return;
-  event.preventDefault();
-  if (!smoothFrame) smoothCurrent = scrollY;
-  const maximum = document.documentElement.scrollHeight - innerHeight;
-  smoothTarget = clamp(smoothTarget + event.deltaY, 0, maximum);
-  if (!smoothFrame) smoothFrame = requestAnimationFrame(runSmoothScroll);
-}, { passive: false });
+if (MOTION_ENABLED) {
+  addEventListener('wheel', event => {
+    if (reducedMotion.matches || !finePointer.matches || event.ctrlKey || event.metaKey || event.defaultPrevented || event.target.closest('dialog')) return;
+    event.preventDefault();
+    if (!smoothFrame) smoothCurrent = scrollY;
+    const maximum = document.documentElement.scrollHeight - innerHeight;
+    smoothTarget = clamp(smoothTarget + event.deltaY, 0, maximum);
+    if (!smoothFrame) smoothFrame = requestAnimationFrame(runSmoothScroll);
+  }, { passive: false });
+}
 
 // The case list responds to direction, then softly returns to neutral.
 const phraseList = document.querySelector('.phrase-list');
@@ -293,6 +308,8 @@ function updateScrollScenes() {
     smoothCurrent = scrollY;
   }
 }
-addEventListener('scroll', updateScrollScenes, { passive: true });
-addEventListener('resize', updateExperiment);
-updateExperiment();
+if (MOTION_ENABLED) {
+  addEventListener('scroll', updateScrollScenes, { passive: true });
+  addEventListener('resize', updateExperiment);
+  updateExperiment();
+}
