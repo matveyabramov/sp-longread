@@ -1,4 +1,4 @@
-const MOTION_ENABLED = false;
+const MOTION_ENABLED = true;
 
 document.documentElement.classList.toggle('motion-disabled', !MOTION_ENABLED);
 
@@ -189,7 +189,7 @@ phrases.forEach(button => {
 document.querySelector('.phrase-list').addEventListener('pointerleave', () => {
   if (!document.activeElement.matches?.(':focus-visible')) clearPreview();
 });
-document.querySelector('.phrase-list').addEventListener('focusout', event => {
+casesSection.addEventListener('focusout', event => {
   if (!casesSection.contains(event.relatedTarget)) clearPreview();
 });
 
